@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  # Node.js application service
+  node:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7000:3000"
+    depends_on:
+      - mongodb
+    environment:
+      MONGODB_URI: mongodb://root:1234567@mongodb:27017/mydatabase?authSource=admin&retryWrites=true&w=majority  # MongoDB URI
+
+  # MongoDB service
+  mongodb:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=1234567
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
