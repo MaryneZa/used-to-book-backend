@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const validator = require('validator');
 
 const userSchema = new Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: [true, "Username already exists"],
+  },
   email: {
     type: String,
     required: true,
@@ -11,8 +17,8 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: [true, "Please enter your email"],
-    minLength: [6, "Your password must be at least 6 characters long"],
-    select: false, //dont send back password after request
+    minLength: [8, "Your password must be at least 6 characters long"],
+    select: true, //dont send back password after request
   },
   role: {
     type: String,

@@ -13,7 +13,7 @@ const getAllBooks = async (req, res) => {
     }
 }
 
-const addBook = async (req, res) => {
+const createBook = async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 12);
     req.body.password = hashedPassword;
     const payload = req.body;
@@ -25,5 +25,5 @@ const addBook = async (req, res) => {
 
 module.exports = {
     getAllBooks,
-    addBook
+    createBook
 };

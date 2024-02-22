@@ -25,8 +25,15 @@ try {
 
 
 const usersRouter = require('./routes/user');
+const booksRouter = require('./routes/book')
+const authRouter = require('./routes/auth')
+
 
 app.use('/api/users', usersRouter);
+app.use('/api/books', booksRouter);
+app.use('/api/auth', authRouter);
+
+
 
 
 
