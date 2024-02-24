@@ -10,7 +10,7 @@ const userLogin = async (req, res) => {
 
         // Validate user credentials (check email/password against database)
         const user = await User.findOne({ email: email });
-
+        console.log("here Loginnn");
         if (!user) {
             throw new Error('Invalid email or password');
         }
